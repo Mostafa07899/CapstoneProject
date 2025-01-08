@@ -7,6 +7,6 @@ urlpatterns = [
     path('users/<int:pk>/', UserDetailView.as_view(), name='user_detail'),
     path('posts/', PostlistCreateView.as_view(), name='post_list_create'),
     path('posts/<int:pk>/', PostDetailView.as_view(), name='post_detail'),
-    path('follow/<int:pk>/', FollowView.as_view(), name='follow'),
+    path('follow/<str:username>/', FollowView.as_view(), name='follow'),
     path('feed/', FeedView.as_view(), name='feed'),
 ]

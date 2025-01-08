@@ -11,13 +11,18 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+
     class Meta:
         model = Post
         fields = ['id', 'user', 'content', 'media', 'timestamp']
 
 
 class FollowerSerializer(serializers.ModelSerializer):
+    follower = UserSerializer(read_only=True)
+    following = UserSerializer(read_only=True)
+
     class Meta:
         model = Follower
-        fields = ['id', 'follower', 'user']
+        fields = ['id', 'follower', 'following']
 
