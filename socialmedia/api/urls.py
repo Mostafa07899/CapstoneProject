@@ -1,4 +1,5 @@
 from django.urls import path
+from django.http import JsonResponse
 from .views import UserDetailView, UserListCreateView, PostDetailView, PostlistCreateView, FollowView, FeedView
 
 
