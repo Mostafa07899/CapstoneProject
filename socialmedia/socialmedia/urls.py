@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
 from rest_framework.routers import DefaultRouter
 from api import views
 from rest_framework_simplejwt.views import (
@@ -29,10 +30,13 @@ router.register(r'users', views.UserViewSet)
 router.register(r'posts', views.PostViewSet)
 router.register(r'followers', views.FollowerViewSet)
 
+def home(request):
+    return HttpResponse("welcome to home page!")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('', home),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
